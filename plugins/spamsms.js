@@ -4,6 +4,7 @@ let handler = async (m, { conn, text, usedPrefix}) => {
                     if (!text) throw `Format Salah! 
  *Contoh*: ${usedPrefix}spamsms 08**********`
                     let nomor = parseInt(text) 
+                    let apikey = yourapikeylolhuman
                     try {
                         await m.reply(`Sedang melakukan spam`) 
                         await fetchJson(`https://api.lolhuman.xyz/api/sms/spam1?apikey=${apikey}&nomor=${nomor}`)
