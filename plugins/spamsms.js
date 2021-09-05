@@ -1,5 +1,5 @@
 let { MessageType } = require('@adiwajshing/baileys') 
-let { fetchJson } = require('./lib/jsonfetch.js') 
+let { fetchJson } = require('./lib/fetcher.js') 
 let handler = async (m, { conn, text, usedPrefix}) => {
                     if (!text) throw `Format Salah! 
  *Contoh*: ${usedPrefix}spamsms 08**********`
