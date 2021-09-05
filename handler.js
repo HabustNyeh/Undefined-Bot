@@ -113,6 +113,49 @@ module.exports = {
                 durability: 100,
                 hancur: false
                 }
+        
+        let pokemon = global.db.data.pokerole[m.sender] 
+        if (typeof pokemon !== 'object') global.db.data.pokemon[m.sender] = {}
+        if (pokemon) {
+        	if(!pokemon.team) pokemom.team = ' '
+                if(!pokemon.nameteam) pokemon.nameteam = conn.getName(m.sender) 
+        	if (!isNumber(pokemon.pokeball)) pokemon.pokeball = 10
+                if (!isNumber(pokemon.greatball)) pokemon.greatball= 5
+                if (!isNumber(pokemon.lupaanj)) pokemon.lupaanj = 0
+                if (!isNumber(pokemon.attack)) pokemon.attack = 0 //damage attack
+                if (!isNumber(pokemon.damage)) pokemon.damage = 0 //damage catch
+                if (!pokemon.list) pokemon.list = '' //list pokemon
+                if (!pokemon.item) pokemon.item = '' //list item
+                if (!pokemon.item1) pokemon.item = ' ' //item pokemon
+                if (!pokemon.item2) pokemon.item = ' ' //item pokemon
+                if (!pokemon.item3) pokemon.item = ' ' //item pokemon
+                if (!isNumber(pokemon.xppoke1)) pokemon.xppoke1 = 0 //xp pokemon untuk naik tier
+                if (!isNumber(pokemon.xppoke2)) pokemon.xppoke2 = 0 //xp pokemom untuk naik tier
+                if (!isNumber(pokemon.xppoke3)) pokemon.xppoke3 = 0 //xp pokemon untuk naik tier
+                if (!isNumber(pokemon.tierpoke1)) pokemon.tierpoke1 = 1 //tier evolusi
+                if (!isNumber(pokemon.tierpoke2)) pokemon.tierpoke2 = 1 //tier evolusi
+                if (!isNumber(pokemon.tierpoke3)) pokemon.tierpoke3 = 1 //tier evolusi
+                if (!pokemon.claim) pokemon.claim = false //free pokemon
+            } else global.db.data.pokerole[m.sender] = {
+            	team: '',
+                nameteam: conn.getName(m.sender),
+                pokeball: 10,
+                greatball: 5,
+                ball: 0,
+                damage: 0,
+                list: '',
+                item: '', 
+                item1: '', 
+                item2: '', 
+                item3: '', 
+                xppoke1: 0, 
+                xppoke2: 0,
+                xppoke3: 0, 
+                tierpoke1: 1,
+                tierpoke2: 1,
+                tierpoke3: 1,
+                claim: false
+                }
 
         let chat = global.db.data.chats[m.chat]
         if (typeof chat !== 'object') global.db.data.chats[m.chat] = {}
