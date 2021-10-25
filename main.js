@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 require('./config.js')
 const { WAConnection: _WAConnection } = require('@adiwajshing/baileys')
 const cloudDBAdapter = require('./lib/cloudDBAdapter')
@@ -493,4 +492,3 @@ async function _quickTest() {
 _quickTest()
   .then(() => conn.logger.info('Quick Test Done'))
   .catch(console.error)
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
