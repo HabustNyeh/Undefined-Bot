@@ -2,14 +2,15 @@ let handler = m => m
 
 handler.before = function (m) {
   let user = global.db.data.users[m.sender]
-       let rank = ((user.owner === false) && (user.premium === false) && (user.helper === false) ) ? 'User Gratisan'
-          : ((user.owner === false) && (user.premium === true) ) ? 'User Premium'
-          : ((user.helper === true) && (user.premium === true)) ? 'Helper Premium'
-          : ((user.helper === true) && (user.owner === true)) ? 'Helper Berbau Owner'
-          : ((user.helper === true) && (user.premium === false) && (user.owner === false)) ? 'Helper Gratisan'
-            : ((user.owner === true) && (user.premium === true)) ? 'Owner Bot & User Premium'
-          : ((user.owner === true) && (user.premium === false)) ? 'Owner Bot'
-          : ''
+       let rank
+if ((user.owner === false) && (user.premium === false) && (user.helper === false) && (user.police === false) ) rank =  'User Gratisan'
+else if ((user.owner === false) && (user.premium === true) ) rank =  'User Premium'
+else if ((user.police === true) && (user.owner === false)) rank =  'Police Bot'
+else if ((user.helper === true) && (user.premium === true)) rank =  'Helper Premium'
+else if ((user.helper === true) && (user.owner === true)) rank = 'Helper Berbau Owner'
+else if ((user.helper === true) && (user.premium === false) && (user.owner === false)) rank = 'Helper Gratisan'
+else if ((user.owner === true) && (user.premium === true)) rank = 'Owner Bot & User Premium'
+else if ((user.owner === true) && (user.premium === false)) rank = 'Owner Bot'
   user.rank = rank
   return true
 }

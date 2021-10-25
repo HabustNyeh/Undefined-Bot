@@ -5,11 +5,21 @@ let handler = async(m, { conn, text }) => {
   let who
   if (m.isGroup) who = m.mentionedJid[0]
   else who = m.chat
-  let res = await fetch('https://api.zeks.xyz/api/gplaybutton?{APIKEY}&text=${text}')
-  if (!res.ok) throw await res.text()
-  let json = await res.json()
-  if (!json.url) throw 'Lagi Error'
-  conn.sendFile(m.chat, json.url, '', 'nih bre', m)
+  let url = `https://api.zeks.xyz/api/gplaybutton?apikey=X1XZkesyWdKspzdw2lyznimvR7e&text=${text}`
+  let res = await fetch(url)
+  if (res.headers.get('content-length') > 100 * 1024 * 1024 * 1024) {
+    delete res
+    throw `Content-Length: ${res.headers.get('content-length')}`
+  }
+  if (!/text|json/.test(res.headers.get('content-type'))) return conn.sendFile(m.chat, url, 'file', text, m)
+  let txt = await res.buffer()
+  try {
+    txt = util.format(JSON.parse(txt+''))
+  } catch (e) {
+    txt = txt + ''
+  } finally {
+    m.reply(txt.slice(0, 65536) + '')
+  }
 }
 handler.help = ['yutubgold']
 handler.tags = ['internet']

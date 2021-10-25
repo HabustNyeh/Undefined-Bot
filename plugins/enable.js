@@ -1,4 +1,4 @@
-let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isROwner }) => {
+let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isROwner, text}) => {
   let isEnable = /true|enable|(turn)?on|1/i.test(command)
   let chat = global.db.data.chats[m.chat]
   let user = global.db.data.users[m.sender]
@@ -93,9 +93,44 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
       conn.callWhitelistMode = isEnable
       break
+    case 'mining':
+      if (m.isGroup) {
+      	if (!isROwner) {
+      	global.dfail('rowner', m, conn) 
+          throw false
+          }
+          chat.mining = true
+          }
+          break
+     case 'warn':
+       if(m.isGroup) {
+       	if (!isAdmin) {
+       	  global.dfail('admin', m, conn) 
+              throw false
+              }
+              chat.warn = true
+              }
+              break
+          case 'publik':
+    case 'public':
+      isAll = true
+      if (!isROwner) {
+        global.dfail('rowner', m, conn)
+        throw false
+      }
+      global.opts['self'] = !isEnable
+      break
+      case 'restrict':
+      isAll = true
+      if (!isOwner) {
+        global.dfail('owner', m, conn)
+        throw false
+      }
+      opts['restrict'] = isEnable
+      break
     default:
       if (!/[01]/.test(command)) throw `
-List option: welcome | delete | public | antilink | autolevelup | detect | document | whitelistmycontacts
+List option: welcome | delete | public | antilink | autolevelup | detect | document | whitelistmycontacts | mining | warn | public | restrict 
 
 Contoh:
 ${usedPrefix}enable welcome

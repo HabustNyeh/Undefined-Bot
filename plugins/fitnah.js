@@ -1,5 +1,7 @@
 let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text }) => {
+	let user = global.db.data.users[m.sender]
+	if (user.acc == true) {
   if (!text) return
   let cm = copy(m)
   let who
@@ -16,9 +18,9 @@ let handler = async (m, { conn, text }) => {
       mentionedJid: conn.parseMention(real.join(sp).trim())
     }
   })
-}
+}}
 handler.command = /^(fitnah|fakereply)$/
-
+handler.premium = true
 module.exports = handler
 
 function copy(obj) {

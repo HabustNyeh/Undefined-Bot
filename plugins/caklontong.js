@@ -3,6 +3,8 @@ let fetch = require('node-fetch')
 let timeout = 120000
 let poin = 500
 let handler = async (m, { conn, usedPrefix }) => {
+	let user = global.db.data.users[m.sender]
+	if (user.acc == true) {
     conn.caklontong = conn.caklontong ? conn.caklontong : {}
     let id = m.chat
     if (id in conn.caklontong) {
@@ -25,7 +27,7 @@ Bonus: ${poin} XP
             if (conn.caklontong[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah *${json.result.jawaban}*\n${json.result.deskripsi}`, conn.caklontong[id][0])
             delete conn.caklontong[id]
         }, timeout)
-    ]
+    ]}
 }
 handler.help = ['caklontong']
 handler.tags = ['game']

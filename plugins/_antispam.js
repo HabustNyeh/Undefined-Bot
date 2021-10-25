@@ -3,6 +3,7 @@ let handler = m => m
 handler.all = async function (m) {
     if (!m.message) return
     this.spam = this.spam ? this.spam : {}
+    if (m.fromMe) return
     if (m.sender in this.spam) {
         this.spam[m.sender].count++
         if (m.messageTimestamp.toNumber() - this.spam[m.sender].lastspam > 10) {

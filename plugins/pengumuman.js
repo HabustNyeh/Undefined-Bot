@@ -1,6 +1,9 @@
 const { MessageType } = require('@adiwajshing/baileys')
 
 let handler = async (m, { conn, text, participants }) => {
+  if(m.chat === '6285754179412-1634810574@g.us') {
+  	conn.reply(m.chat, `kamu perlu izin wa.me/6285810646280 😭`, m)
+  } else {
   let users = participants.map(u => u.jid)
   let q = m.quoted ? m.quoted : m
   let c = m.quoted ? m.quoted : m.msg
@@ -21,7 +24,7 @@ let handler = async (m, { conn, text, participants }) => {
     text || q.text 
   )
   await conn.relayWAMessage(msg)
-}
+}}
 handler.help = ['pengumuman', 'announce', 'hidetag'].map(v => v + ' [teks]')
 handler.tags = ['group']
 handler.command = /^(pengumuman|announce|hiddentag|hidetag)$/i

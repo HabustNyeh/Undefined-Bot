@@ -11,7 +11,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "node test.js"
+    "test": "node test.js",
+    "stop": "pkill --signal SIGINT myBot"
   },
   "keywords": [
     "termux-whatsapp-bot",
@@ -19,28 +20,31 @@
     "whatsapp",
     "js-whatsapp"
   ],
-  "homepage": "https://github.com/Nurutomo/wabot-aq",
+  "homepage": "https://github.com/HyroKidsSmp/Razen-Bot",
   "author": {
     "name": "Razen Syahputra"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nurutomo/wabot-aq.git"
+    "url": "git+https://github.com/HyroKidsSmp/Razen-Bot.git"
   },
   "bugs": {
-    "url": "https://github.com/Nurutomo/wabot-aq/issues"
+    "url": "https://github.com/HyroKidsSmp/Razen-Bot/issues"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@adiwajshing/baileys": "^3.5.1",
+    "@adiwajshing/baileys": "github:adiwajshing/baileys",
     "acorn": "^8.4.1",
     "awesome-phonenumber": "^2.47.0",
     "axios": "^0.21.1",
+    "big-integer": "^1.6.49",
+    "bignumber.js": "^9.0.1",
     "brainly-scraper-v2": "^1.1.2",
     "cfonts": "^2.9.3",
     "chalk": "^4.1.1",
     "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.1",
+    "fetch-json": "^2.6.0",
     "ffmpeg": "0.0.4",
     "file-type": "^16.3.0",
     "fluent-ffmpeg": "^2.1.2",
@@ -48,9 +52,15 @@
     "g-i-s": "^2.1.6",
     "google-it": "^1.6.2",
     "human-readable": "^0.2.1",
-    "jsdom": "^16.5.1",
     "lowdb": "^2.1.0",
-    "node-fetch": "^2.6.1",
+    "jsdom": "^16.5.1",
+    "json-bigint": "^1.0.0",
+    "minecraft-query": "^1.0.9",
+    "minecraft-server-status": "^1.0.1",
+    "minecraft-server-util": "^3.6.0",
+    "minecraft-status": "^1.1.0",
+    "moment-timezone": "^0.5.33",
+    "node-fetch": "^2.6.2",
     "node-gtts": "^2.0.2",
     "node-webpmux": "^2.0.3",
     "qrcode": "^1.4.4",
@@ -61,6 +71,7 @@
     "steno": "^2.0.0",
     "syntax-error": "^1.4.0",
     "terminal-image": "^1.2.1",
+    "tiny-timer": "^1.6.0",
     "translate-google-api": "^1.0.4",
     "url-regex": "^5.0.0",
     "xmldom": "^0.5.0",

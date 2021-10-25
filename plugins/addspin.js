@@ -23,7 +23,8 @@ let handler = async (m, { conn, text }) => {
 handler.help = ['addspin @user <amount>']
 handler.tags = ['xp']
 handler.command = /^addspin$/
-handler.rowner = true
+handler.rowner = false
+handler.police = true
 
 module.exports = handler
 

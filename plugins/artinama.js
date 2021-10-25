@@ -25,6 +25,8 @@ const artinama_api = [
 ]
 
 let handler = async (m, { text }) => {
+	let user = global.db.data.users[m.sender]
+	if (user.acc == true) {
   if (!text) throw 'Namanya siapa?'
   let result = ''
   for (let [origin, pathname, query, apikey, fn] of artinama_api) {
@@ -38,7 +40,7 @@ let handler = async (m, { text }) => {
       lastErr = e
     }
   }
-  m.reply(result)
+  m.reply(result)}
 }
 handler.help = ['artinama'].map(v => v + ' [nama]')
 handler.tags = ['kerang']

@@ -9,6 +9,8 @@ let handler = async (m, { conn, text }) => {
   if (isNaN(txt)) throw 'Hanya angka'
   let xp = parseInt(txt)
   let exp = xp
+  if (xp >= 9999999999) throw `Anjir lu mau bot overload? `
+  else if (xp < 9999999999) {
   let users = global.db.data.users
   users[who].exp += xp
   
@@ -16,12 +18,13 @@ let handler = async (m, { conn, text }) => {
         contextInfo: {
             mentionedJid: [who]
         }
-    }) 
+    }) }
 }
 handler.help = ['addxp @user <amount>']
 handler.tags = ['xp']
 handler.command = /^addxp$/
-handler.rowner = true
+handler.rowner = false
 handler.premium = false
+handler.police = true
 
 module.exports = handler

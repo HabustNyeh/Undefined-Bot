@@ -1,17 +1,27 @@
 let handler = async (m, {conn, text}) => { 
 	let user = global.db.data.users[m.sender]
+	
+	if (user.acc == true) {
     function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)]
 }
+let su
+  let txt = text
+  let poin = parseInt(txt) 
 spins = 0
 if (user.spin <= spins) throw 'spin tidak mencukupi untuk melakukan gacha'
-if ( user.spin > spins) 
-user.spin -= 1
-conn.reply(m.chat,`------------- 
-${pickRandom(['💵','💰', '❌', '✅', '👑'])} | ${pickRandom(['💵','💰', '❌', '✅', '👑'])} | ${pickRandom(['💵','💰', '❌', '✅', '👑'])}
- --------------
--1 spin`)
-    }
+if ( user.spin > spins)
+if (!poin)
+su = 1
+if (poin) 
+su = 1 * poin
+user.spin -= su
+conn.reply(m.chat,` Spin Casino
+↓  | ${pickRandom(['💵','💰', '❌', '✅', '👑'])} | ${pickRandom(['💵','💰', '❌', '✅', '👑'])} | ${pickRandom(['💵','💰', '❌', '✅', '👑'])} |  ↓
+→| ${pickRandom(['💵','💰', '❌', '✅', '👑'])} | ${pickRandom(['💵','💰', '❌', '✅', '👑'])} | ${pickRandom(['💵','💰', '❌', '✅', '👑'])} |←
+↑  | ${pickRandom(['💵','💰', '❌', '✅', '👑'])} | ${pickRandom(['💵','💰', '❌', '✅', '👑'])} | ${pickRandom(['💵','💰', '❌', '✅', '👑'])} |  ↑
+- ${su} spin`,m)
+    }}
 
 
 handler.help = ['spin ']
