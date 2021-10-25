@@ -7,7 +7,10 @@ let harsal = 500
 let harcod = 1250
 let hartro = 3000
 let hargol = 7000
+<<<<<<< HEAD
 let harpuf = 15000
+=======
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
 
 let handler = async (m, { conn, text, usedPrefix}) => { 
     let jumlah = parseInt(text)
@@ -16,7 +19,11 @@ let handler = async (m, { conn, text, usedPrefix}) => {
 }
     let bobas = global.db.data.users[m.sender]
     let tzy = global.db.data.invmenu[m.sender]
+<<<<<<< HEAD
    if (!text) throw `Jual apa kak?
+=======
+   if (!text) throw `Jual apa kak? 
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
 - sell sampah
   - 100
 - sell salmon
@@ -26,12 +33,16 @@ let handler = async (m, { conn, text, usedPrefix}) => {
 - sell tropical
   - 3000
 - sell golden
+<<<<<<< HEAD
   - 7000
 - sell puffer
   - 15000
   
   contoh: /sell sampah all
   contoh: /sell all`
+=======
+  - 7000`
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
   if (text == 'sampah') {
     if (tzy.sampah < jumlah) throw 'Yang kamu miliki tidak sama dengan yang kamu impikan'
     if (tzy.sampah > jumlah) {
@@ -83,6 +94,7 @@ let handler = async (m, { conn, text, usedPrefix}) => {
     conn.reply(m.chat, `Berhasil menjual ${jumlah} salmon`) 
     
   }
+<<<<<<< HEAD
   
   if (text == 'all') {
     let jumlah1 = tzy.sampah
@@ -136,6 +148,8 @@ let handler = async (m, { conn, text, usedPrefix}) => {
     
   }
   
+=======
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
   if (text == 'tropical') {
     if (tzy.tropical < jumlah) throw 'Yang kamu miliki tidak sama dengan yang kamu impikan'
     if (tzy.tropical > jumlah) { 

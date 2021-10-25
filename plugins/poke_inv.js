@@ -1,7 +1,11 @@
 let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, text }) => {
     let pokemon = global.db.data.pokerole[m.sender]
+<<<<<<< HEAD
     let su = `Hai ${pokemon.nameteam}
+=======
+    let su = `Hai conn.getName(m.sender) 
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
           *${pokemon.nameteam}*
 *Team:* ${pokemon.team}
 *List Pokemon:* ${pokemon.list}
@@ -17,6 +21,7 @@ let handler = async (m, { conn, text }) => {
 
 *Tier Pokemon 1*: ${pokemon.tier1}
 *Tier Pokemon 2*: ${pokemon.tier2}
+<<<<<<< HEAD
 *Tier Pokemon 3*: ${pokemon.tier3}`
 
 conn.reply(m.chat, `${su}`) 
@@ -37,3 +42,9 @@ handler.botAdmin = false
 handler.fail = null
 
 module.exports = handler
+=======
+*Tier Pokemon 3*: ${pokemon.tier3}
+`
+conn.reply(m.chat, ${su}) 
+}
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af

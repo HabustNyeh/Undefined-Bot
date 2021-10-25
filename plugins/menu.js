@@ -8,12 +8,20 @@ const defaultMenu = {
   before: `
 ━━ 「 *Razen Bot* 」 ━━
 ➸ Hallo👋 %name!
+<<<<<<< HEAD
 ➸ Kamu Adalah Role %role
 ➸ Kamu Adalah  %rank
 ➸ Sisa *%limit Limit*
 ➸ Level Kamu *%level (%exp / %maxexp)* [%xp4levelup lagi untuk levelup]
 ➸ Owner: wa.me/❤️🔪=💔6⃣2⃣8⃣2⃣1⃣8⃣1⃣6⃣6⃣1⃣5⃣6⃣1⃣
 ➸━「 08-09-05 」━
+=======
+➸ Kamu Adalah Role %role}
+➸ Kamu Adalah  %rank}
+➸ Sisa *%limit Limit*
+➸ Level Kamu *%level (%exp / %maxexp)* [%xp4levelup lagi untuk levelup]
+➸ Owner: wa.me/❤️🔪=💔6⃣2⃣8⃣2⃣1⃣8⃣1⃣6⃣6⃣1⃣5⃣6⃣1⃣
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
 %readmore`.trimStart(),
   header: '━━「 %category 」━━',
   body: '│ ➸ %cmd%islimit',
@@ -25,9 +33,14 @@ ${'```%npmdesc```'}
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   let tags
+<<<<<<< HEAD
   let user = global.db.data.users[m.sender]
   let teks = `${args[0]}`.toLowerCase()
   let arrayMenu = ['all', 'daftar', 'main', 'game', 'xp', 'money', 'fish', 'pokemon', 'sticker', 'kerang', 'quotes', 'admin', 'group', 'islami', 'premium', 'internet', 'nulis', 'downloader', 'tools', 'fun', 'database', 'jadibot', 'owner', 'host', 'advanced', 'info', 'vicstore']
+=======
+  let teks = `${args[0]}`.toLowerCase()
+  let arrayMenu = ['all', 'daftar', 'main', 'game', 'xp', 'money', 'fish', 'pokemon', 'sticker', 'kerang', 'quotes', 'admin', 'group', 'islami', 'premium', 'internet', 'nulis', 'downloader', 'tools', 'fun', 'database', 'jadibot', 'owner', 'host', 'advanced', 'info', 'vicstore', '-----/n\-----' , 'vpso', 'vpsg', 'provider', 'vcc', 'payment']
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
       'Daftar': 'Daftar', 
@@ -55,7 +68,17 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       'host': 'Host',
       'advanced': 'Advanced',
       'info': 'Info',
+<<<<<<< HEAD
       'vicstore': 'Victrius Store'
+=======
+      'vicstore': 'Victrius Store', 
+      '-----/n\-----': 'SHOP', 
+      'vpso': 'Vps  - Rdp OVH',
+      'vpsg': 'Vps - Rdp Gcp', 
+      'provider': 'Provider', 
+      'vcc': 'List Vcc', 
+      'payment': 'Payment'
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
   }
    if (teks == 'daftar') tags = {
     'daftar': 'Daftar'
@@ -135,6 +158,27 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'vicstore') tags = {
      'vicstore': 'Victrius Store'
      }
+<<<<<<< HEAD
+=======
+ if (teks == '-----/n\-----') tags = {
+     '-----/n\-----': 'SHOP'
+     }
+  if (teks == 'vpso') tags = {
+   'vpso': 'Vps  - Rdp OVH'
+   }
+   if (teks == 'vpsg') tags = {
+      'vpsg': 'Vps - Rdp Gcp'
+      }
+   if (teks == 'provider') tags = {
+      'provider': 'Provider'
+      }
+   if (teks == 'vcc') tags = {
+      'vcc': 'List Vcc'
+      }
+    if (teks == 'payment') tags = {
+      'payment': 'Payment'
+      }
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
 
 
   try {
@@ -303,6 +347,38 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   "title": "vicstore",
                   "description": "",
                   "rowId": ".? vicstore"
+<<<<<<< HEAD
+=======
+                }, {
+                  "title": "-----/Shop\-----",
+                  "description": "",
+                  "rowId": ".? -----/n\-----"
+                }, 
+                {
+                  "title": "Vps - Rdp OVH",
+                  "description": "",
+                  "rowId": ".? vpso"
+                },
+                {
+                  "title": "Vps - Rdp GCP",
+                  "description": "",
+                  "rowId": ".? vpsg"
+                },
+                {
+                  "title": "Provider",
+                  "description": "",
+                  "rowId": ".? provider"
+                },
+                {
+                  "title": "Vcc",
+                  "description": "",
+                  "rowId": ".? vcc"
+                },
+                {
+                  "title": "Payment",
+                  "description": "",
+                  "rowId": ".? payment"
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
                 },
               ]
             }
@@ -391,7 +467,11 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
+<<<<<<< HEAD
     await conn.send3ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), 'Undefined Bot', 'Owner', '.owner', 'Donasi', '.donasi', 'VictriusStore', '.vicstore', m)
+=======
+    await conn.send3ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), 'Undefined Bot', 'Owner', '.owner', 'Donasi', '.donasi', '_VictriusStore_', '.vicstore', m)
+>>>>>>> af1925062280e64ba5708f13a58560832731a8af
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e

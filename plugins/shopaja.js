@@ -18,26 +18,6 @@ let handler = async (m, { conn, text, usedPrefix}) => {
     - durability: 100
   - batu
     - 2000000
-<<<<<<< HEAD
-    - durability: 5000
-  - besi
-    - 5000000
-    - durability: 20000
-  - Gold
-    - 3000000
-    - durability: 15000
-  - Diamond
-    - 10000000
-    - durability: 3000000
-  - Netherite
-    - 1000000000
-    - durability: 50000000000
-  - God
-    - PC OWNER
-    - durability: ?? 
-  - *Raihan*
-    - durability: 10000000000
-=======
     - durability: 150
   - besi
     - 5000000
@@ -54,7 +34,6 @@ let handler = async (m, { conn, text, usedPrefix}) => {
   - God
     - PC OWNER
     - durability: ?? 
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
 - bait
 - boat
 - hoki
@@ -77,11 +56,7 @@ let handler = async (m, { conn, text, usedPrefix}) => {
                conn.reply(m.chat, `Berhasil membeli pancingan batu`) 
                invu.rod = 'batu'
                invu.moneyfish -= bats
-<<<<<<< HEAD
-               invu.durabilty += 5000
-=======
                invu.durabilty += 150
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
                }
             }
        if (text == 'rod besi') {
@@ -90,11 +65,7 @@ let handler = async (m, { conn, text, usedPrefix}) => {
                conn.reply(m.chat, `Berhasil membeli pancingan besi`) 
                invu.rod = 'besi'
                invu.moneyfish -= bass
-<<<<<<< HEAD
-               invu.durabilty += 20000
-=======
                invu.durabilty += 200
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
                }
             }
         if (text == 'rod gold') {
@@ -103,11 +74,7 @@ let handler = async (m, { conn, text, usedPrefix}) => {
                conn.reply(m.chat, `Berhasil membeli pancingan gold`) 
                invu.rod = 'gold'
                invu.moneyfish -= gols
-<<<<<<< HEAD
-               invu.durabilty += 15000
-=======
                invu.durabilty += 175
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
                }
             }
         if (text == 'rod diamond') {
@@ -117,11 +84,7 @@ let handler = async (m, { conn, text, usedPrefix}) => {
                conn.reply(m.chat, `Berhasil membeli pancingan diamond`) 
                invu.rod = 'diamond'
                invu.moneyfish -= dias
-<<<<<<< HEAD
-               invu.durabilty += 3000000
-=======
                invu.durabilty += 300
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
                }
             }
         if (text == 'rod netherite'){
@@ -131,29 +94,17 @@ let handler = async (m, { conn, text, usedPrefix}) => {
                conn.reply(m.chat, `Berhasil membeli pancingan Netherite`) 
                invu.rod = '*Netherite*'
                invu.moneyfish -= nets
-<<<<<<< HEAD
-               invu.durabilty += 50000000000
-=======
                invu.durabilty += 500
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
                }
             }
         if (text == 'rod raihan'){
 	
-<<<<<<< HEAD
-           if (user.raihan == false) throw 'Kamu Bukan Raihan-Chan'
-           if (user.raihan == true) {
-               conn.reply(m.chat, `Raihan-Chan berhasil mengambil rod nya`) 
-               invu.rod = '*Raihan-Chan*'
-               invu.durabilty += 10000000000
-=======
            if (invu.moneyfish < 1) throw 'Uang lu gk ada ego'
            if (invu.moneyfish > 1) {
                conn.reply(m.chat, `Berhasil membeli pancingan Raihans`) 
                invu.rod = '*Netherite*'
                invu.moneyfish += 20000000
                invu.durabilty += 10000
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
                }
             }
        

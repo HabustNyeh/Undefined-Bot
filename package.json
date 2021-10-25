@@ -20,16 +20,16 @@
     "whatsapp",
     "js-whatsapp"
   ],
-  "homepage": "https://github.com/Nurutomo/wabot-aq",
+  "homepage": "https://github.com/HyroKidsSmp/Razen-Bot",
   "author": {
     "name": "Razen Syahputra"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nurutomo/wabot-aq.git"
+    "url": "git+https://github.com/HyroKidsSmp/Razen-Bot.git"
   },
   "bugs": {
-    "url": "https://github.com/Nurutomo/wabot-aq/issues"
+    "url": "https://github.com/HyroKidsSmp/Razen-Bot/issues"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
