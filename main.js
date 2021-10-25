@@ -19,7 +19,6 @@ const { Low, JSONFile } = low
 const rl = Readline.createInterface(process.stdin, process.stdout)
 const WAConnection = simple.WAConnection(_WAConnection)
 
-
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 global.timestamp = {
   start: new Date
@@ -28,14 +27,21 @@ global.timestamp = {
 const PORT = process.env.PORT || 3000
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 
-global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷★π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
 global.db = new Low(
   /https?:\/\//.test(opts['db'] || '') ?
   new cloudDBAdapter(opts['db']) :
   new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`)
 )
-global.DATABASE = global.db // Backwards Compatibility
+
+global.teks = new Low(
+  /https?:\/\//.test(opts['db'] || '') ?
+  new cloudDBAdapter(opts['db']) :
+  new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}text.json`)
+)
+
+global.DATABASE = global.db; // Backwards Compatibility
 
 global.conn = new WAConnection()
 let authFile = `${opts._[0] || 'session'}.data.json`
@@ -100,9 +106,19 @@ if (opts['test']) {
       stats: {},
       msgs: {},
       sticker: {},
+      invmenu: {}, 
+      pokerole: {}, 
       ...(global.db.data || {})
     }
+    global.teks.data = {
+    	promo: {}, 
+        res: {},
+        target: {}, 
+        virtex: {}, 
+        ...(global.teks.data || {}) 
+        }
     global.db.chain = _.chain(global.db.data)
+    global.teks.chain = _.chain(global.teks.data)
     fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
     global.timestamp.connect = new Date
   })
@@ -140,6 +156,7 @@ global.reloadHandler = function () {
             if (fs.existsSync(authFile)) await conn.loadAuthInfo(authFile)
             await conn.connect()
             fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
+            console.log(`Bot On`) 
             global.timestamp.connect = new Date
           }
         } catch (e) {

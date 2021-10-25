@@ -4,6 +4,8 @@ const { sticker } = require('../lib/sticker')
 const { MessageType } = require('@adiwajshing/baileys')
 
 let handler = async (m, { conn, text }) => {
+	let user = global.db.data.users[m.sender]
+	if (user.acc == true) {
  try {
      let teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.text
      let url = await fetch(global.API('https://salism3api.pythonanywhere.com','/text2gif/',{text: teks}))
@@ -17,7 +19,7 @@ let handler = async (m, { conn, text }) => {
    m.reply('Conversion Failed')
    throw false
   }
-}
+}}
 handler.help = ['attp2']
 handler.tags = ['sticker']
 handler.command = /^(attp2)$/i

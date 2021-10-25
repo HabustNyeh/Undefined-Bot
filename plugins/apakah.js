@@ -1,4 +1,6 @@
 let handler = async (m, { conn, text }) => {
+	let user = global.db.data.users[m.sender]
+	if (user.acc == true) {
   conn.reply(m.chat, `
 *Pertanyaan:* ${m.text}
 *Jawaban:* ${pickRandom(['Ya','Mungkin iya','Mungkin','Mungkin tidak','Tidak','Tidak mungkin'])}
@@ -6,7 +8,7 @@ let handler = async (m, { conn, text }) => {
   contextInfo: {
     mentionedJid: m.mentionedJid
   }
-} : {})
+} : {})}
 }
 handler.help = ['apakah <teks>?']
 handler.tags = ['kerang']

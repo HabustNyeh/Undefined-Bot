@@ -1,5 +1,7 @@
 let handler  = async (m, { conn }) => {
-  conn.reply(m.chat,`“${pickRandom(global.bucin)}”`, m)
+	let user = global.db.data.users[m.sender]
+	if (user.acc == true) {
+  conn.reply(m.chat,`“${pickRandom(global.bucin)}”`, m)}
 }
 handler.help = ['bucin']
 handler.tags = ['quotes']

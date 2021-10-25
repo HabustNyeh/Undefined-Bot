@@ -1,34 +1,3 @@
-let handler = async (m, { conn, args, usedPrefix }) => {
-  conn.math = conn.math ? conn.math : {}
-  if (args.length < 1) throw `
-Mode: ${Object.keys(modes).join(' | ')}
-
-Contoh penggunaan: ${usedPrefix}mtk medium
-`.trim()
-  let mode = args[0].toLowerCase()
-  if (!(mode in modes)) throw `
-Mode: ${Object.keys(modes).join(' | ')}
-
-Contoh penggunaan: ${usedPrefix}mtk medium
-`.trim()
-  let id = m.chat
-  if (id in conn.math) return conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.math[id][0])
-  let math = genMath(mode)
-  conn.math[id] = [
-    await conn.reply(m.chat, `Berapa hasil dari *${math.str}*?\n\nTimeout: ${(math.time / 1000).toFixed(2)} detik\nBonus Jawaban Benar: ${math.bonus} XP
-salah = -100xp`, m),
-    math, 4,
-    setTimeout(() => {
-      if (conn.math[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah ${math.result}`, conn.math[id][0])
-      delete conn.math[id]
-    }, math.time)
-  ]
-}
-handler.help = ['mtk <mode>']
-handler.tags = ['game']
-handler.command = /^mtk/i
-
-module.exports = handler
 
 let modes = {
   noob: [-3, 3,-3, 3, '+-', 15000, 10],
@@ -46,7 +15,7 @@ let operators = {
 }
 
 function genMath(mode) {
-  let [a1, a2, b1, b2, ops, time, bonus] = modes[mode]
+  let [a1, a2, b1, b2, ops, time, bonus1, bonus2] = modes[mode]
   let a = randomInt(a1, a2)
   let b = randomInt(b1, b2)
   let op = pickRandom([...ops])
@@ -56,7 +25,8 @@ function genMath(mode) {
     str: `${a} ${operators[op]} ${b}`,
     mode,
     time,
-    bonus,
+    bonus1,
+    bonus2: `0`, 
     result
   }
 }
@@ -71,3 +41,37 @@ function randomInt(from, to) {
 function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)]
 }
+
+
+let handler = async (m, { conn, args, usedPrefix }) => {
+	let user = global.db.data.users[m.sender]
+	if (user.acc == true) {
+  conn.math = conn.math ? conn.math : {}
+  if (args.length < 1) throw `
+Mode: ${Object.keys(modes).join(' | ')}
+
+Contoh penggunaan: ${usedPrefix}mtk medium
+`.trim()
+  let mode = args[0].toLowerCase()
+  if (!(mode in modes)) throw `
+Mode: ${Object.keys(modes).join(' | ')}
+
+Contoh penggunaan: ${usedPrefix}mtk medium
+`.trim()
+  let id = m.chat
+  if (id in conn.math) return conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.math[id][0])
+  let math = genMath(mode)
+  conn.math[id] = [
+    await conn.reply(m.chat, `Berapa hasil dari *${math.str}*?\n\nTimeout: ${(math.time / 1000).toFixed(2)} detik\nBonus Jawaban Benar: ${math.bonus1} XP & ${math.bonus2}`, m),
+    math, 4,
+    setTimeout(() => {
+      if (conn.math[id]) conn.reply(m.chat, `Waktu habis!\nJawabannya adalah ${math.result}`, conn.math[id][0])
+      delete conn.math[id]
+    }, math.time)
+  ]}
+}
+handler.help = ['mtk <mode>']
+handler.tags = ['game']
+handler.command = /^mtk/i
+
+module.exports = handler

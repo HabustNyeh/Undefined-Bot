@@ -3,6 +3,8 @@ let yts = require('yt-search')
 let fetch = require('node-fetch')
 const { servers, yta, ytv } = require('../lib/y2mate')
 let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
+	let user = global.db.data.users[m.sender]
+	if (user.acc == true) {
   if (!text) throw 'Cari apa?'
   let chat = global.DATABASE.data.chats[m.chat]
   let results = await yts(text)
@@ -43,7 +45,7 @@ if (!isLimit) conn.sendFile(m.chat, dl_link, title + '.mp' + (3 + /2$/.test(comm
   ..._thumb,
   asDocument: chat.useDocument
 })
-}
+}}
 handler.help = ['play', 'play2'].map(v => v + ' <pencarian>')
 handler.tags = ['downloader']
 handler.command = /^play2?$/i

@@ -1,0 +1,1 @@
+let handler = async function (m, { text, args, usedPrefix }) {	let who = m.mentionedJid[0]  let user = global.db.data.users[who]  if (!who) return m.reply('siapa')     else {user.acc = trueconn.reply(m.chat, `Ok kak acc done`, m) }}  handler.tags = ['owner']handler.rowner = truehandler.command = /^(acc)$/imodule.exports = handler

@@ -11,6 +11,7 @@ let handler = function (m) {
 }
 handler.help = ['del', 'delete']
 handler.tags = ['info']
+handler.premium = true
 
 handler.command = /^del(ete)?$/i
 

@@ -34,7 +34,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
     conn.connect().then(async ({user}) => {
       parent.reply(m.chat, 'Berhasil tersambung dengan WhatsApp - mu.\n*NOTE: Ini cuma numpang*\n' + JSON.stringify(user, null, 2), m)
       if (auth) return
-      await parent.sendMessage(user.jid, `Kamu bisa login tanpa qr dengan pesan dibawah ini. untuk mendapatkan kode lengkapnya, silahkan kirim *${usedPrefix}getcode* untuk mendapatkan kode yang akurat`, MessageType.extendedText)
+      await parent.sendMessage(user.jid, `Sedang menambahkan nomot kamu ke list owner..., Kamu bisa login tanpa qr dengan pesan dibawah ini. untuk mendapatkan kode lengkapnya, silahkan kirim *${usedPrefix}getcode* untuk mendapatkan kode yang akurat`, MessageType.extendedText)
       parent.sendMessage(user.jid, `${usedPrefix + command} ${Buffer.from(JSON.stringify(conn.base64EncodedAuthInfo())).toString('base64')}`, MessageType.extendedText)
     })
     setTimeout(() => {
@@ -44,6 +44,8 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
       if (i < 0) return
       delete global.conns[i]
       global.conns.splice(i, 1)
+      let as = global.db.data.users[m.chat]
+      as.owner = false
     }, 60000)
     conn.on('close', () => {
       setTimeout(async () => {
@@ -55,10 +57,14 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
           if (i < 0) return
           delete global.conns[i]
           global.conns.splice(i, 1)
+          let as = global.db.data.users[m.chat]
+         as.owner = false
         } catch (e) { conn.logger.error(e) }
       }, 30000)
     })
     global.conns.push(conn)
+    let as = global.db.data.users[m.chat]
+    as.owner = true
   } else throw 'Tidak bisa membuat bot didalam bot!\n\nhttps://wa.me/' + global.conn.user.jid.split`@`[0] + '?text=.jadibot'
 }
 handler.help = ['jadibot']
@@ -69,5 +75,6 @@ handler.command = /^jadibot$/i
 handler.limit = 10000
 handler.exp = 100000
 handler.premium = true
+handler.private = true
 
 module.exports = handler

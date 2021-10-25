@@ -1,14 +1,21 @@
 let handler = async (m, { conn, args, text}) => {
-  if (!text) throw 'Tag salah satu lah'
+  
   let ownerGroup = m.chat.split`-`[0] + '@s.whatsapp.net'
   let users = m.mentionedJid.filter(u => !(u == ownerGroup || u.includes(conn.user.jid)))
   for (let user of users) if (user.endsWith('@s.whatsapp.net')) await conn.groupRemove(m.chat, [user]) 
-  let who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-  await conn.groupRemove(m.chat, [who])
+  let who = m.quoted.sender && m.mentionedJid[0]
+  if (!who) throw 'Tag salah atau reply salah satu'
+  let reason = text.replace('@' + who.split`@`[0], '').trim()
+  if (!text) {
+  	conn.reply(m.chat, `Bye`,m) 
+      m.reply(`Kamu di kick`, who) 
+  	await conn.groupRemove(m.chat, [who]) 
+  } else {
+  	conn.reply(m.chat, `Bye`) 
+      m.reply(`Kamu di kick karena ${reason}`, who) 
+  	await conn.groupRemove(m.chat, [who]) 
+  }
 
-  
-  m.reply(`Asik Ada Mangsa, Otw Headshot`) 
-  conn.reply(m.chat,`👏BOOM HEADSHOTT💯,Selamat Tinggal  ${users} 👋👋👋👋Jangan Masuk Lagi 🙌`,m.text) 
 }
 handler.help = ['headshot'].map(v => v + ' @user')
 handler.tags = ['owner']

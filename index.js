@@ -1,4 +1,6 @@
 console.log('Starting...')
+const process = require('process');
+process.title = "myBot";
 let { spawn } = require('child_process')
 let path = require('path')
 let fs = require('fs')
@@ -34,7 +36,6 @@ function start(file) {
     switch (data) {
       case 'reset':
         p.kill()
-        start.apply(this, arguments)
         break
       case 'uptime':
         p.send(process.uptime())
@@ -46,7 +47,6 @@ function start(file) {
     if (code === 0) return
     fs.watchFile(args[0], () => {
       fs.unwatchFile(args[0])
-      start(file)
     })
   })
   // console.log(p)

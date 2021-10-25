@@ -1,6 +1,8 @@
 let { MessageType } = require('@adiwajshing/baileys')
 const { createHash } = require('crypto')
 let handler = async (m, { conn, text }) => {
+	let user = global.db.data.users[m.sender]
+	if (user.acc == true) {
   let sn = createHash('md5').update(m.sender).digest('hex')
   if (!text) throw 'Masukkan jumlah Exp yang Mau di ubah ke Money Server'
   let who
@@ -12,7 +14,6 @@ let handler = async (m, { conn, text }) => {
   let xp = parseInt(txt)
   let exp = xp
   if (exp < 100) throw 'Minimal convert 100 exp'
-  let users = global.DATABASE._data.users
   if (exp > users[m.sender].exp) throw 'Exp tidak mencukupi untuk convert'
   users[m.sender].exp -= xp
   users[who].exp += xp
@@ -21,7 +22,7 @@ let handler = async (m, { conn, text }) => {
         contextInfo: {
             mentionedJid: [who]
         }
-    }) 
+    }) }
 }
 handler.help = ['bms @user JumlahXp  ------- 1000Xp = 10K Money Server', 'BuyMoneyServer @user JumlahXp']
 handler.tags = ['money']

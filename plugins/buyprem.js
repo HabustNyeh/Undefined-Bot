@@ -1,22 +1,47 @@
 let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn }) => {
-  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-  else who = m.chat
+  let who = m.sender
   let money
   let harga = 10000000
-  let users = global.DATABASE._data.users[who]
-  if (harga > users.money) throw 'mana uang'
+  let users = global.db.data.users[who]
+  if (harga > users.money) throw `uang kamu kurang ${10000000 - users.money} untuk membeli premium`
+  if (harga = users.money) {
   users.money -= harga
-global.prems.push(`${who.split`@`[0]}`)
-  m.reply(m.chat, `Berhasil Membeli untuk @${who.split`@`[0]}`, m, {
+  
+  let a = new Date();
+    let d = a.setTime(a.getTime() + 2592000000);
+    console.log(d)
+    console.log(`Addprem`) 
+    users.expired = d
+    users.premium = true
+  
+  m.reply(m.chat, `Berhasil Membeli premium @${m.sender`@`[0]}`, m, {
         contextInfo: {
             mentionedJid: [who]
         }
     })
+    }
+    
+    if (harga < users.money) {
+  users.money -= harga
+  
+  let a = new Date();
+    let d = a.setTime(a.getTime() + 2592000000);
+    console.log(d)
+    console.log(`Addprem`) 
+    users.expired = d
+    users.premium = true
+  
+  m.reply(m.chat, `Berhasil Membeli premium @${m.sender`@`[0]}`, m, {
+        contextInfo: {
+            mentionedJid: [who]
+        }
+    })
+    }
 }
-handler.help = ['prem','prem @user']
+handler.help = ['bp', 'buyperm']
 handler.tags = ['money']
-handler.command = /^prem$/
+handler.command = /^bp$/
 handler.owner = false
 handler.mods = false
 handler.premium = false

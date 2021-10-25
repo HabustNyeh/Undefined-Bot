@@ -8,17 +8,17 @@ handler.before = async function (m) {
   if (m.quoted.id == this.math[id][0].id) {
     let math = JSON.parse(JSON.stringify(this.math[id][1]))
     if (m.text == math.result) {
-      global.db.data.users[m.sender].exp += math.bonus
+      global.db.data.users[m.sender].exp += math.bonus1
+      global.db.data.users[m.sender].spin += math.bonus2
       clearTimeout(this.math[id][3])
       delete this.math[id]
-      m.reply(`*Jawaban Benar!*\n+${math.bonus} XP`)
+      m.reply(`*Jawaban Benar!*\n+${math.bonus1} XP & ${math.bonus2} spin`)
     } else {
       if (--this.math[id][2] == 0) {
         clearTimeout(this.math[id][3])
         delete this.math[id]
         m.reply(`*Kesempatan habis!*\nJawaban: *${math.result}*`)
-      } else m.reply(`*Jawaban Salah!*\nMasih ada ${this.math[id][2]} kesempatan, -100Xp karena salah`)
-        global.db.data.users[m.sender].exp -= 100
+      } else m.reply(`*Jawaban Salah!*\nMasih ada ${this.math[id][2]} kesempatan`)
     }
   }
   return !0
