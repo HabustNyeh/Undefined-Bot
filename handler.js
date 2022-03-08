@@ -42,17 +42,7 @@ module.exports = {
             if (!isNumber(user.age)) user.age = -1
             if (!isNumber(user.regTime)) user.regTime = -1
           }
-<<<<<<< HEAD
-
           if(!user.raihan) user.raihan = false
-=======
-
-=======
-<<<<<<< HEAD
-          if(!user.raihan) user.raihan = false
-=======
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
->>>>>>> c5373dfb6a3fdc9d53a2048cd161201103f7ae91
           if (!isNumber(user.level)) user.level = 0
           if (! isNumber(user.hoki)) user.hoki = 1
           if (!isNumber(user.afk)) user.afk = -1
@@ -74,26 +64,17 @@ module.exports = {
           if (!('autolevelup' in user)) user.autolevelup = true
           if (!('owner' in user)) user.owner = false
           if(!('helper' in user)) user.helper = false
+          if(!isNumber(user.verify)) user.verify = 0
+          if(!('staff' in user)) user.staff = false
         } else global.db.data.users[m.sender] = {
           exp: 0,
           limit: 10,
           money: 1000,
           spin: 10,
           hoki: 1,
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> c5373dfb6a3fdc9d53a2048cd161201103f7ae91
           acc: false, 
           end: false, 
           raihan: false, 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
->>>>>>> c5373dfb6a3fdc9d53a2048cd161201103f7ae91
           level: 0,
           maxspin: 0,
           lastclaim: 0,
@@ -118,6 +99,9 @@ module.exports = {
           helper: false, 
           rank: '', 
           autolevelup: true,
+          verify: 0,
+          staff: false, 
+          mt: false, 
         }
         
         let invmenu = global.db.data.invmenu[m.sender] 
@@ -136,17 +120,7 @@ module.exports = {
             if(!isNumber(invmenu.cod)) invmenu.cod = 0
             if(!isNumber(invmenu.sampah)) invmenu.sampah = 0
             if(!isNumber(invmenu.golden)) invmenu.golden = 0
-<<<<<<< HEAD
-
             if(!isNumber(invmenu.puffer)) invmenu.puffer = 0
-=======
-
-=======
-<<<<<<< HEAD
-            if(!isNumber(invmenu.puffer)) invmenu.puffer = 0
-=======
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
->>>>>>> c5373dfb6a3fdc9d53a2048cd161201103f7ae91
             if(!isNumber(invmenu.tropical)) invmenu.tropical = 0
             if (!invmenu.hancur) invmenu.hancur = false
             } else global.db.data.invmenu[m.sender] = {
@@ -157,11 +131,7 @@ module.exports = {
                 tropical: 0,
                 golden: 0,
                 sampah: 0,
-<<<<<<< HEAD
-
                 puffer: 0,
-=======
-
                 normal: [], 
                 rare: [], 
                 legend: [], 
@@ -173,11 +143,12 @@ module.exports = {
                 }
         
         let pokemon = global.db.data.pokerole[m.sender] 
-
         if (typeof pokemon !== 'object') global.db.data.pokerole[m.sender] = {}
         if (pokemon) {
         	if(!pokemon.team) pokemon.team = ['']
                 if(!pokemon.nameteam) pokemon.nameteam = ''
+                if(!pokemon.room) pokemon.room = false
+                if(!isNumber(pokemon.jumlah)) pokemon.jumlah = 0
         	if (!isNumber(pokemon.pokeball)) pokemon.pokeball = 10
                 if (!isNumber(pokemon.greatball)) pokemon.greatball= 5
                 if (!isNumber(pokemon.lupaanj)) pokemon.lupaanj = 0
@@ -198,37 +169,12 @@ module.exports = {
             } else global.db.data.pokerole[m.sender] = {
             	team: '',
                 nameteam: this.getName(m.sender),
-=======
-        if (typeof pokemon !== 'object') global.db.data.pokemon[m.sender] = {}
-        if (pokemon) {
-        	if(!pokemon.team) pokemom.team = ' '
-                if(!pokemon.nameteam) pokemon.nameteam = conn.getName(m.sender) 
-        	if (!isNumber(pokemon.pokeball)) pokemon.pokeball = 10
-                if (!isNumber(pokemon.greatball)) pokemon.greatball= 5
-                if (!isNumber(pokemon.lupaanj)) pokemon.lupaanj = 0
-                if (!isNumber(pokemon.attack)) pokemon.attack = 0 //damage attack
-                if (!isNumber(pokemon.damage)) pokemon.damage = 0 //damage catch
-                if (!pokemon.list) pokemon.list = '' //list pokemon
-                if (!pokemon.item) pokemon.item = '' //list item
-                if (!pokemon.item1) pokemon.item = ' ' //item pokemon
-                if (!pokemon.item2) pokemon.item = ' ' //item pokemon
-                if (!pokemon.item3) pokemon.item = ' ' //item pokemon
-                if (!isNumber(pokemon.xppoke1)) pokemon.xppoke1 = 0 //xp pokemon untuk naik tier
-                if (!isNumber(pokemon.xppoke2)) pokemon.xppoke2 = 0 //xp pokemom untuk naik tier
-                if (!isNumber(pokemon.xppoke3)) pokemon.xppoke3 = 0 //xp pokemon untuk naik tier
-                if (!isNumber(pokemon.tierpoke1)) pokemon.tierpoke1 = 1 //tier evolusi
-                if (!isNumber(pokemon.tierpoke2)) pokemon.tierpoke2 = 1 //tier evolusi
-                if (!isNumber(pokemon.tierpoke3)) pokemon.tierpoke3 = 1 //tier evolusi
-                if (!pokemon.claim) pokemon.claim = false //free pokemon
-            } else global.db.data.pokerole[m.sender] = {
-            	team: '',
-                nameteam: conn.getName(m.sender),
-
                 pokeball: 10,
                 greatball: 5,
                 ball: 0,
                 damage: 0,
                 list: '',
+                jumlah: 0,
                 item: '', 
                 item1: '', 
                 item2: '', 
@@ -239,9 +185,9 @@ module.exports = {
                 tierpoke1: 1,
                 tierpoke2: 1,
                 tierpoke3: 1,
-                claim: false
+                claim: false, 
+                room: false
                 }
-
                 
         let ass = global.teks.data.promo
         if (typeof ass !== 'object') global.teks.data.promo = {}
@@ -251,109 +197,11 @@ module.exports = {
           texts: ''
         }
         
-=======
-<<<<<<< HEAD
-                puffer: 0,
-=======
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
-                normal: [], 
-                rare: [], 
-                legend: [], 
-                mythic: [], 
-                levelbot: 0,
-                rod: ['kayu'], 
-                durability: 100,
-                hancur: false
-                }
-        
-        let pokemon = global.db.data.pokerole[m.sender] 
-<<<<<<< HEAD
-        if (typeof pokemon !== 'object') global.db.data.pokerole[m.sender] = {}
-        if (pokemon) {
-        	if(!pokemon.team) pokemon.team = ['']
-                if(!pokemon.nameteam) pokemon.nameteam = ''
-        	if (!isNumber(pokemon.pokeball)) pokemon.pokeball = 10
-                if (!isNumber(pokemon.greatball)) pokemon.greatball= 5
-                if (!isNumber(pokemon.lupaanj)) pokemon.lupaanj = 0
-                if (!isNumber(pokemon.attack)) pokemon.attack = 0
-                if (!isNumber(pokemon.damage)) pokemon.damage = 0
-                if (!pokemon.list) pokemon.list = ''
-                if (!pokemon.item) pokemon.item = '' 
-                if (!pokemon.item1) pokemon.item = ''
-                if (!pokemon.item2) pokemon.item = ''
-                if (!pokemon.item3) pokemon.item = ''
-                if (!isNumber(pokemon.xppoke1)) pokemon.xppoke1 = 0
-                if (!isNumber(pokemon.xppoke2)) pokemon.xppoke2 = 0
-                if (!isNumber(pokemon.xppoke3)) pokemon.xppoke3 = 0
-                if (!isNumber(pokemon.tierpoke1)) pokemon.tierpoke1 = 1
-                if (!isNumber(pokemon.tierpoke2)) pokemon.tierpoke2 = 1
-                if (!isNumber(pokemon.tierpoke3)) pokemon.tierpoke3 = 1
-                if (!pokemon.claim) pokemon.claim = false
-            } else global.db.data.pokerole[m.sender] = {
-            	team: '',
-                nameteam: this.getName(m.sender),
-=======
-        if (typeof pokemon !== 'object') global.db.data.pokemon[m.sender] = {}
-        if (pokemon) {
-        	if(!pokemon.team) pokemom.team = ' '
-                if(!pokemon.nameteam) pokemon.nameteam = conn.getName(m.sender) 
-        	if (!isNumber(pokemon.pokeball)) pokemon.pokeball = 10
-                if (!isNumber(pokemon.greatball)) pokemon.greatball= 5
-                if (!isNumber(pokemon.lupaanj)) pokemon.lupaanj = 0
-                if (!isNumber(pokemon.attack)) pokemon.attack = 0 //damage attack
-                if (!isNumber(pokemon.damage)) pokemon.damage = 0 //damage catch
-                if (!pokemon.list) pokemon.list = '' //list pokemon
-                if (!pokemon.item) pokemon.item = '' //list item
-                if (!pokemon.item1) pokemon.item = ' ' //item pokemon
-                if (!pokemon.item2) pokemon.item = ' ' //item pokemon
-                if (!pokemon.item3) pokemon.item = ' ' //item pokemon
-                if (!isNumber(pokemon.xppoke1)) pokemon.xppoke1 = 0 //xp pokemon untuk naik tier
-                if (!isNumber(pokemon.xppoke2)) pokemon.xppoke2 = 0 //xp pokemom untuk naik tier
-                if (!isNumber(pokemon.xppoke3)) pokemon.xppoke3 = 0 //xp pokemon untuk naik tier
-                if (!isNumber(pokemon.tierpoke1)) pokemon.tierpoke1 = 1 //tier evolusi
-                if (!isNumber(pokemon.tierpoke2)) pokemon.tierpoke2 = 1 //tier evolusi
-                if (!isNumber(pokemon.tierpoke3)) pokemon.tierpoke3 = 1 //tier evolusi
-                if (!pokemon.claim) pokemon.claim = false //free pokemon
-            } else global.db.data.pokerole[m.sender] = {
-            	team: '',
-                nameteam: conn.getName(m.sender),
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
-                pokeball: 10,
-                greatball: 5,
-                ball: 0,
-                damage: 0,
-                list: '',
-                item: '', 
-                item1: '', 
-                item2: '', 
-                item3: '', 
-                xppoke1: 0, 
-                xppoke2: 0,
-                xppoke3: 0, 
-                tierpoke1: 1,
-                tierpoke2: 1,
-                tierpoke3: 1,
-                claim: false
-                }
-<<<<<<< HEAD
-                
-        let ass = global.teks.data.promo
-        if (typeof ass !== 'object') global.teks.data.promo = {}
-        if (ass) {
-          if (!ass.texts) ass.texts= 'Tidak Ada Promo'
-        } else global.db.data.promo = {
-          texts: ''
-        }
-        
-=======
-
->>>>>>> af1925062280e64ba5708f13a58560832731a8af
->>>>>>> c5373dfb6a3fdc9d53a2048cd161201103f7ae91
         let chat = global.db.data.chats[m.chat]
         if (typeof chat !== 'object') global.db.data.chats[m.chat] = {}
         if (chat) {
           if (!('isBanned' in chat)) chat.isBanned = false
-          if (!('welcome' in chat)) chat.welcome = true
+          if (!('welcome' in chat)) chat.welcome = false
           if (!('detect' in chat)) chat.detect = false
           if (!('sWelcome' in chat)) chat.sWelcome = ''
           if (!('sBye' in chat)) chat.sBye = ''
@@ -538,6 +386,11 @@ module.exports = {
           let xp = 'exp' in plugin ? parseInt(plugin.exp) : 17 // XP Earning per command
           if (xp > 200) m.reply('Ngecit -_-') // Hehehe
           else m.exp += xp
+          if (opts['staffonly'] && !m.fromMe && !isROwner && !global.db.data.users[m.sender].staff){
+          	this.reply(m.chat, `Staff Only`, m) 
+              continue
+          }
+          
           if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 1) {
             this.reply(m.chat, `Limit anda habis, silahkan beli melalui *${usedPrefix}buy*`, m)
             continue // Limit habis
@@ -706,7 +559,7 @@ Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
 
 global.dfail = (type, m, conn) => {
   let msg = {
-    rowner: 'Perintah ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
+    rowner: 'Perintah ini hanya dapat digunakan oleh _*Real Owner*_',
     owner: 'Perintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
     mods: 'Perintah ini hanya dapat digunakan oleh _*Moderator*_ !',
     premium: 'Perintah ini hanya untuk member _*Premium*_ !',
