@@ -159,6 +159,9 @@ module.exports = {
                 if (!pokemon.item1) pokemon.item = ''
                 if (!pokemon.item2) pokemon.item = ''
                 if (!pokemon.item3) pokemon.item = ''
+                if (!pokemon.pokemonxp1) pokemon.pokemonxp1 = ''
+                if (!pokemon.pokemonxp2) pokemon.pokemonxp2 = ''
+                if (!pokemon.pokemonxp3) pokemon.pokemonxp3 = ''
                 if (!isNumber(pokemon.xppoke1)) pokemon.xppoke1 = 0
                 if (!isNumber(pokemon.xppoke2)) pokemon.xppoke2 = 0
                 if (!isNumber(pokemon.xppoke3)) pokemon.xppoke3 = 0
@@ -179,6 +182,9 @@ module.exports = {
                 item1: '', 
                 item2: '', 
                 item3: '', 
+                pokemonxp1: '', 
+                pokemonxp2: '', 
+                pokemonxp3: '', 
                 xppoke1: 0, 
                 xppoke2: 0,
                 xppoke3: 0, 
