@@ -3,7 +3,7 @@ let handler = async (m, { conn, text, usedPrefix}) => {
 	function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)] }
 	let pokemon = global.db.data.pokerole[m.sender]
-	if(pokemon.claim = true){
+	if(pokemon.claim == true){
 		conn.reply(m.chat, `-_-`, m)
 		return false
 	}
