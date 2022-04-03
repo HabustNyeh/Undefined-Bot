@@ -1,7 +1,7 @@
 {
-  "name": "razen-bot",
+  "name": "undefined-bot",
   "version": "1.0.0",
-  "description": "Razen Bot ~~~",
+  "description": "Undefined Bot ~~~",
   "depecrated": false,
   "main": "index.js",
   "directories": {
@@ -20,16 +20,16 @@
     "whatsapp",
     "js-whatsapp"
   ],
-  "homepage": "https://github.com/HyroKidsSmp/Razen-Bot",
+  "homepage": "https://github.com/HabustNyeh/Unfefined-Bot",
   "author": {
     "name": "Razen Syahputra"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HyroKidsSmp/Razen-Bot.git"
+    "url": "git+https://github.com/HabustNyeh/Undefined-Bot.git"
   },
   "bugs": {
-    "url": "https://github.com/HyroKidsSmp/Razen-Bot/issues"
+    "url": "https://github.com/HabustNyeh/Undefined-Bot/issues"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
