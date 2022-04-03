@@ -12,12 +12,10 @@ let handler = async (m, { conn, text, args}) => {
   let b = `U${eU(args[1])}`.toLowerCase() 
   
   async function fetchUrls(txtUrls1, txtUrls2) {
-  	let _url = new URL(txtUrls1)
-      let url = global.API(_url.origin, _url.pathname, Object.fromEntries(_url.searchParams.entries()), 'APIKEY')
+      let url = new URL(txtUrls1)
       let res = await fetch(url)
       if(!res.ok){
-      	_url = new URL(txtUrls2)
-          url = global.API(_url.origin, _url.pathname, Object.fromEntries(_url.searchParams.entries()), 'APIKEY')
+      	  url = new URL(txtUrls2)
           res = await fetch(url)
           if(!res.ok) return conn.reply(m.chat, `Error, Emoji not support`, m)
       }
