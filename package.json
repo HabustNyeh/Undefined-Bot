@@ -43,6 +43,7 @@
     "cfonts": "^2.9.3",
     "chalk": "^4.1.1",
     "cheerio": "^1.0.0-rc.10",
+    "emoji-unicode": "^2.0.1",
     "express": "^4.17.1",
     "fetch-json": "^2.6.0",
     "ffmpeg": "0.0.4",
